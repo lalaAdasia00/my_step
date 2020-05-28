@@ -16,10 +16,10 @@
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+  const greetings=
+      ['I make excellence the standard and not the goal!', 'My favorite color is PINK!', 'I love to play basketball', 'I am a musician'];
 
-  // Pick a random greeting.
+  // Pick a random fact.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
   // Add it to the page.
