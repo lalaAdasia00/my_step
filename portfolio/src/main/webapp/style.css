@@ -1,9 +1,18 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
+#title {
+  margin-right: 10px;
   width: 650px;
+  float: left;
+}
+
+#intro {
+    float: left;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+#images {
+    margin-right: auto;
+    float: right;
 }
