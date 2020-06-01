@@ -79,7 +79,7 @@ body {
 }
 
 .aboutme {
-    width: 5000px;
+    width: 1350px;
     margin: 0 auto;
 }
 
@@ -103,6 +103,12 @@ h1 {
     color: #6d6d6d;
     margin: 100px 0 50px 0;
 }
+
+.image:hover {
+    opacity: 0.2;
+    max-width: 200px;
+    margin-top: 15px;
+} 
 
 
 
