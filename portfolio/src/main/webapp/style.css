@@ -1,4 +1,115 @@
-#title {
+body {
+    margin: 0;
+    padding: 0;
+    font-family: cursive;
+}
+
+.nav {
+    background-color: #ffffff;
+    color: #000000;
+    list-style: none;
+    text-align: right;
+    padding: 20px 0 0 0;
+}
+
+.nav > li {
+
+    display: inline-block;
+    padding-right: 50px;
+    font-size: 12px;
+}
+
+.nav > li > a {
+
+    text-decoration: none;
+    color: #000000;
+}
+
+.nav > li > a:hover {
+    
+    color: #896124;
+}
+
+.logo {
+
+    color: #000000;
+    float: left;
+    padding-left: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.logo > a {
+
+    text-decoration: none;
+    color: #000000;
+}
+.logo > a:hover {
+
+    color: #896124;
+}
+
+.banner {
+
+    width: 100%;
+    display: block;
+}
+
+.banner > .banner-image {
+
+    width: 100%;
+    display: block;
+}
+
+.aboutme1 {
+
+    width: 298px;
+    border: 1px solid #896124;
+    margin: 20px 10px;
+    padding: 0 5px;
+    float: left;
+
+}
+
+.aboutme1 > p {
+    font-size: 14px;
+    color: #000000;
+    max-width: 250px;
+}
+
+.aboutme {
+    width: 5000px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #896124;
+    color:#ffffff;
+    padding: 10px 0;
+    margin: 0 -6px;
+}
+
+.image {
+    max-width: 200px;
+    margin: 15px 0 0 0;
+}
+
+.heading {
+    text-align: center;
+    font-size: 50px;
+    color: #6d6d6d;
+    margin: 100px 0 50px 0;
+}
+
+
+
+
+
+
+/*#title {
   margin-right: 10px;
   width: 650px;
   float: left;
@@ -15,4 +126,4 @@
 #images {
     margin-right: auto;
     float: right;
-}
+}*/
