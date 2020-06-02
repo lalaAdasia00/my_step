@@ -110,8 +110,70 @@ h1 {
     margin-top: 15px;
 } 
 
+.contact-section {
+    background: url('https://media3.s-nbcnews.com/j/newscms/2019_52/3163571/191223-end-of-decade-black-lives-matter-main-kh_bc951e3d2b80d753a54363af8366d3c1.fit-760w.jpg') no-repeat;
+    background-size: cover;
+    padding: 40px 0;
+}
 
+.contact-section h1{
+    text-align: center;
+    font-size: 50px;
+    margin: 100px 0 50px 0;
+}
 
+.border {
+    width: 100px;
+    height: 10px;
+    margin: 40px auto;
+}
+
+.contact-form {
+    color: #896124;
+    max-width: 600px;
+    margin: auto;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.contact-form-text{
+
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    border: 0;
+    background: #ffffff;
+    padding: 20px 40px;
+    outline: none;
+    color: #896124;
+    transition: 0.5s;
+}
+
+.contact-form-text:focus {
+    box-shadow: 0 0 10px 4px #896124;
+}
+
+textarea.contact-form-text {
+    color: #896124;
+    resize: none;
+    height: 120px;
+}
+
+.contact-form-btn {
+    float: right;
+    border: 0;
+    background: #896124;
+    color: #ffffff;
+    padding: 12px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.contact-form-btn:hover {
+    background: #896124;
+}
 
 
 
