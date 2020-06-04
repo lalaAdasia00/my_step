@@ -26,3 +26,49 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+
+//This is practice code for using fetch()
+
+async function getRandomIntroUsingAsyncAwait() {
+  const response = await fetch('/data');
+  const intro = await response.text();
+  document.getElementById('intro-container').innerText = intro;
+}
+
+
+
+
+
+
+/*function addNameToDom(name) {
+  console.log('Adding quote to dom: ' + name);
+
+  const nameContainer = document.getElementById('name-container');
+  nameContainer.innerText = quote;
+}
+
+
+function handleResponse(response) {
+  console.log('Handling the response.');
+
+  const textPromise = response.text();
+
+  textPromise.then(addNameToDom);
+}
+
+
+function getRandomName() {
+  console.log('Fetching a random name.');
+
+  const responsePromise = fetch('/random-name');
+
+  responsePromise.then(handleResponse);
+}
+
+//Or 
+async function getRandomNameUsingAsyncAwait() {
+  const response = await fetch('/random-name');
+  const name = await response.text();
+  document.getElementById('name-container').innerText = name;
+}*/
