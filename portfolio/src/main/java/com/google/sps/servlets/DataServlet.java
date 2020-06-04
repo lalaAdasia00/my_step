@@ -29,4 +29,11 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println("<h1>Hello La'Zshane' Adasia Hoskins</h1>");
   }
+
+  private String convertToJson(ServerStats serverStats) {
+    ArrayList<String> arr = new ArrayList<String>();
+    arr.add("La'Zshane");
+    arr.add("Adasia");
+    arr.add("Hoskins");
+  }
 }
