@@ -2,17 +2,110 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>La'Zshane's Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
   </head>
+
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
+      <!--This is my navigation bar code-->
+
+      <ul class="nav">
+
+        <!--This is the title of my page-->
+        <div class="logo">
+            <a href="#">La'Zshane's Portfolio</a>
+        </div>
+        <!--End of title code-->
+
+        <li><a href="index.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="extra.html">Extracurriculars</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      
+      </ul>
+      <!--This is my banner code-->
+      <div class="banner">
+          <img class="banner-image" src="images/BLM fist.jpg">
+      </div>
+      <!--This is the end of the banner code-->
+
+      <div class="heading">About Me</div>
+        <div align="center" class="aboutme"> <!--Serivces-->
+
+            <div class="aboutme1"> <!--service1-->
+               <h1>Intro&#128526</h1>
+               <img class="image" src="images/Headshot 1.png">
+               <p>Ethical, friendly, accountable, self-motivated, enthusiastic, student leader.Talent for being detail<br />
+                  oriented and mastering complex problem solving responsibilities. Natural leader with proven ability<br />
+                  to take initiative and see the task through to completion. Sincere passion for science, technology, engineering, and math.</p> 
+            </div>
+
+            <div class="aboutme1"> <!--service1-->
+               <h1>Education&#129299</h1>
+               <img class="image" src="images/graduation.JPG">
+               <p><li>Rising Junior at Hampton University</li>
+                  <li>Computer Science Cyerbersecurity Major</li>
+                  <li>Leadership Studies Minor</li>
+                  <li>GPA: 3.73 [Top 15% of my class]</li>
+                  <li>Expected Graduation: May 8th 2022</li>
+                  <li>Graduated from Cypress Lakes HS with a 4.1 GPA [Top 10% of my class]</li></p>
+            </div>
+
+            <div class="aboutme1"> <!--service1-->
+               <h1>Family&#128525;</h1>
+               <img class="image" src="images/Family.JPG">
+               <p>I was born in Grand Rapids, Michigan; raised in Houston,Texas. I am the eldest of four; two sisters and a brother.
+                  My sister, Divinity will be attending Tuskeegee University, my youngest sister, Alanis is a senior in High School, and
+                  my brother Lucius is a Junior in High School. We are a Christian and musical family. My family's faith guides every step we take.</p> 
+            </div>
+
+            <div class="aboutme1"> <!--service1-->
+               <h1>Fun facts&#128540</h1>
+               <img class="image" src="images/MP.JPG">
+               <p>Click here to learn some interesting facts:</p>
+               <button onclick="addRandomGreeting()">ABOUT ME!</button>
+               <div id="greeting-container"></div> 
+            </div>
+        
+        </div>
+
+        <!-- THIS IS PRACTICE CODE FOR USING FETCH()-->
+        <div id="fetch">
+            <h1>My name</h1>
+            <p>Click here to see a my name:</p>
+            <button onclick="getRandomIntroUsingAsyncAwait()">Fetch a name!</button>
+            <div id="intro-container"></div>
+        </div>
+
+    
+
   </body>
+
+  
+  <!--<body>
+    <div id="title">
+      <h1>&#8734La'Zshane' Adasia Hoskins&#8734</h1>
+
+      <hr />
+
+        <div id="intro">
+        </div>
+    </div>
+
+      <h3>Employment</h3>
+        <p>UNCF CS Summer Academy</p>
+            <ul>
+                <li>Out of 30 students selected out of over 100 applications to study at Carnegie Mellon University on<br />
+                    NASA Ames Research Center in Silicon Valley.
+                </li>
+
+                <li>Project based curriculum focused on Data Structures/Algorithms, Mobile/Web App Development, UI/UX skills
+                    development, and introduction to Tech Entrepreneurship
+                </li>
+            </ul>
+
+    </body>-->
+
 </html>

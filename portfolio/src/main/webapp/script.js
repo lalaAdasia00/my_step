@@ -16,13 +16,59 @@
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+  const greetings=
+      ['I make excellence the standard and not the goal!', 'My favorite color is PINK!', 'I love to play basketball', 'I am a musician'];
 
-  // Pick a random greeting.
+  // Pick a random fact.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+
+//This is practice code for using fetch()
+
+async function getRandomIntroUsingAsyncAwait() {
+  const response = await fetch('/data');
+  const intro = await response.text();
+  document.getElementById('intro-container').innerText = intro;
+}
+
+
+
+
+
+
+/*function addNameToDom(name) {
+  console.log('Adding quote to dom: ' + name);
+
+  const nameContainer = document.getElementById('name-container');
+  nameContainer.innerText = quote;
+}
+
+
+function handleResponse(response) {
+  console.log('Handling the response.');
+
+  const textPromise = response.text();
+
+  textPromise.then(addNameToDom);
+}
+
+
+function getRandomName() {
+  console.log('Fetching a random name.');
+
+  const responsePromise = fetch('/random-name');
+
+  responsePromise.then(handleResponse);
+}
+
+//Or 
+async function getRandomNameUsingAsyncAwait() {
+  const response = await fetch('/random-name');
+  const name = await response.text();
+  document.getElementById('name-container').innerText = name;
+}*/
