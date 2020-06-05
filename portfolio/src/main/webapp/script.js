@@ -36,6 +36,23 @@ async function getRandomIntroUsingAsyncAwait() {
   document.getElementById('intro-container').innerText = intro;
 }
 
+//This is the practice code for using JSON
+
+function getServerStats(){
+    fetch('/server-stats').then(response => response.json()).then((stats) => {
+
+    const statsListElement = document.getElementById('server-stats-container');
+    statsListElement.innerHTML = '';
+    statsListElement.appendChild(
+        createListElement('Start time: ' + stats.startTime));
+    statsListElement.appendChild(
+        createListElement('Current time: ' + stats.currentTime));
+    statsListElement.appendChild(
+        createListElement('Max memory: ' + stats.maxMemory));
+    statsListElement.appendChild(
+        createListElement('Used memory: ' + stats.usedMemory));
+  });
+}
 
 
 
