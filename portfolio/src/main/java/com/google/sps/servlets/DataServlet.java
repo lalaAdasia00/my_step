@@ -45,4 +45,27 @@ public class DataServlet extends HttpServlet {
         String json = gson.toJson(comments);
         return json;
     }
+
+    
+    //The forms section
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = getParameter(request, "text-input", "");
+
+    if (sort) {
+      Arrays.sort(words);
+    }
+
+    response.setContentType("text/html;");
+    response.getWriter().println(Arrays.toString(words));
+  }
+
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
 }

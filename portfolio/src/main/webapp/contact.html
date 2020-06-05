@@ -101,9 +101,20 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                     </ul>
                 </div>
-
-
             <div>
         </div>
+
+        <form action="/text" method="POST">
+            <p>Enter a comma-separated list of words:</p>
+            <textarea name="text-input">one, two, three</textarea>
+            <br/><br/> 
+            <p>Choose some options:</p>
+            <input type="checkbox" name="upper-case" value="true"> Upper-case
+            <br/>
+            <input type="checkbox" name="sort" value="true"> Alphabetize
+            <br/><br/>
+            <input type="submit" />
+        </form>
+
     </body>
 </html>
