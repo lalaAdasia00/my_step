@@ -33,7 +33,9 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       comments = new ArrayList<>();
       comments.add("Comment number 1 from server");
-
+      comments.add("Comment number 2 from server");
+      comments.add("Comment number 3 from server");
+      
       String json = convertToJsonUsingGson(comments);
 
       response.setContentType("application/json;");
@@ -53,12 +55,8 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String text = getParameter(request, "text-input", "");
 
-    if (sort) {
-      Arrays.sort(words);
-    }
-
     response.setContentType("text/html;");
-    response.getWriter().println(Arrays.toString(words));
+    response.getWriter().println(text);
   }
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
