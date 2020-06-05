@@ -29,6 +29,7 @@ public class DataServlet extends HttpServlet {
 
     
   private ArrayList<String>comments;
+  
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       comments = new ArrayList<>();
