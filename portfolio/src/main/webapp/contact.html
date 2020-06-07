@@ -40,16 +40,16 @@
       <div class="contact-section">
           <h1>Contact</h1>
           <div class="border"></div>
-          <form class="contact-form" action="contact.html" method="post">
-              <input type="text" class="contact-from-text" placeholder="Your name">
-              <input type="email" class="contact-from-text" placeholder="Your email">
-              <input type="text" class="contact-from-text" placeholder="Your phone">
-              <textarea class="contact-form-text" placeholder="Your message"></textarea>
-              <input type="submit" class="contact-form-btn" value="Send">
+          <form class="contact-form" action="/comment" method="POST">
+              <input type="text" class="contact-from-text" placeholder="Your name" name="first-name">
+              <input type="email" class="contact-from-text" placeholder="Your email" name="email">
+              <input type="text" class="contact-from-text" placeholder="Your phone" name="phone">
+              <textarea class="contact-form-text" placeholder="Your message" name="message"></textarea>
+              <input type="submit" class="contact-form-btn">
           </form>
       </div>
 
-      <div id="comment">
+      <!--<div id="comment">
             <p>Click here to see a comment:</p>
             <button onclick="getComment()">Get a comment</button>
             <div id="comment-container"></div>
@@ -65,7 +65,7 @@
             <input type="checkbox" name="sort" value="true"> Alphabetize
             <br/><br/>
             <input type="submit" />
-        </form>
+        </form>-->
 
       <!--Contact Card-->
 

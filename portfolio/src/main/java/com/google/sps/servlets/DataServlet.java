@@ -16,6 +16,9 @@ package com.google.sps.servlets;
 
 import java.io.IOException;
 import com.google.gson.Gson;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +41,7 @@ public class DataServlet extends HttpServlet {
       comments.add("Comment number 3 from server");
       
       String json = convertToJsonUsingGson(comments);
+      
 
       response.setContentType("application/json;");
       response.getWriter().println(json);
@@ -54,7 +58,18 @@ public class DataServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
-    String text = getParameter(request, "text-input", "");
+    String text = getParameter(request, "first-name", "");
+    String email = getParameter(request, "email", "");
+    String phone = getParameter(request, "phone", "");
+    String message = getParameter(request, "message", "");
+
+    Entity taskEntity = new Entity("Task");
+    taskEntity.setProperty("first-name", text);
+    taskEntity.setProperty("email", email);
+    taskEntity.setProperty("phone", phone);
+    taskEntity.setProperty("message", message);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(taskEntity);
 
     response.setContentType("text/html;");
     response.getWriter().println(text);
