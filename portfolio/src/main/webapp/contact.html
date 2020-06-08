@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale-1"> 
   </head>
 
-  <body>
+  <body onload="getComment()">
       <!--This is my navigation bar code-->
 
       <ul class="nav">
@@ -37,6 +37,7 @@
       
       <!--Contact Information Code-->
 
+
       <div class="contact-section">
           <h1>Contact</h1>
           <div class="border"></div>
@@ -49,7 +50,8 @@
               <input type="submit" class="contact-form-btn">
           </form>
       </div>
-
+      
+        <div id="comment-container"></div>
       <!--<div id="comment">
             <p>Click here to see a comment:</p>
             <button onclick="getComment()">Get a comment</button>

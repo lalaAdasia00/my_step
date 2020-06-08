@@ -39,10 +39,25 @@ function addRandomGreeting() {
 //This is the practice code for using JSON
 
 function getComment(){
+    //console.log("Hello");
     fetch('/comment').then(response => response.json()).then((comment) => {
-        document.getElementById('comment-container').innerHTML = comment;
+        document.getElementById('comment-container').appendChild(convertObjects(comment));
         console.log(comment);
     });
+}
+
+function convertObjects(comment){
+
+    const node = document.createElement("ul");
+
+    for(let i = 0; i < comment.length; i++){
+
+        const nextNode = document.createElement("li");
+        nextNode.innerText = comment[i].text + "," + comment[i].message;
+        node.appendChild(nextNode);
+
+    }
+    return node;
 }
 
 
