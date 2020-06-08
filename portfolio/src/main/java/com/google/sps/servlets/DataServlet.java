@@ -59,12 +59,14 @@ public class DataServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
     String text = getParameter(request, "first-name", "");
+    String text2 = getParameter(request, "last-name", "");
     String email = getParameter(request, "email", "");
     String phone = getParameter(request, "phone", "");
     String message = getParameter(request, "message", "");
 
     Entity taskEntity = new Entity("Task");
     taskEntity.setProperty("first-name", text);
+    taskEntity.setProperty("last-name", text2);
     taskEntity.setProperty("email", email);
     taskEntity.setProperty("phone", phone);
     taskEntity.setProperty("message", message);
