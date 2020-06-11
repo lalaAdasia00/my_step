@@ -8,14 +8,14 @@ public final class Comments {
   private final String email;
   private final String phone;
   private final String message;
-  //private final Integer num;
+  private final long timestamp;
 
-  public Comments(String firstName, String lastName, String email, String phone, String message) {
+  public Comments(String firstName, String lastName, String email, String phone, String message, long timestamp) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.phone = phone;
     this.message = message;
-    //this.num = num;
+    this.timestamp = timestamp;
   }
 }

@@ -42,7 +42,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException{
       int displayAmount = Integer.parseInt(request.getParameter("num"));      
-      Query query = new Query("Comments").addSort("firstName", SortDirection.DESCENDING);
+      Query query = new Query("Comments").addSort("timestamp", SortDirection.DESCENDING);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       List<Entity> results = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(displayAmount));
@@ -71,8 +71,9 @@ public class DataServlet extends HttpServlet {
         String email = (String) entity.getProperty("email");
         String phone = (String) entity.getProperty("phone");
         String message = (String) entity.getProperty("message");
+        long timestamp = (long) entity.getProperty("timestamp");
 
-        Comments nComments = new Comments(firstName, lastName, email, phone, message);
+        Comments nComments = new Comments(firstName, lastName, email, phone, message, timestamp);
 
         return nComments;
     }
@@ -80,26 +81,38 @@ public class DataServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+
+        Entity commentEntity = convertComment(request);
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        datastore.put(commentEntity);
+
+        response.sendRedirect("/contact.html");
+        
+    }
+    //so this function is converting request --> entity
+
+    public Entity convertComment(HttpServletRequest request){
+
         // Get the input from the form.
         String firstName = getParameter(request, "firstName", "");
         String lastName = getParameter(request, "lastName", "");
         String email = getParameter(request, "email", "");
         String phone = getParameter(request, "phone", "");
         String message = getParameter(request, "message", "");
-        //String num = getParameter(request, "num");
+        long timestamp = System.currentTimeMillis();
 
-        Entity commentEntity = new Entity("Comments");
-        commentEntity.setProperty("firstName", firstName);
-        commentEntity.setProperty("lastName", lastName);
-        commentEntity.setProperty("email", email);
-        commentEntity.setProperty("phone", phone);
-        commentEntity.setProperty("message", message);
-        //commentEntity.setProperty("num", num);
-        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        datastore.put(commentEntity);
+        Entity ncommentEntity = new Entity("Comments");
 
-        response.sendRedirect("/contact.html");
-        
+        ncommentEntity.setProperty("firstName", firstName);
+        ncommentEntity.setProperty("lastName", lastName);
+        ncommentEntity.setProperty("email", email);
+        ncommentEntity.setProperty("phone", phone);
+        ncommentEntity.setProperty("message", message);
+        ncommentEntity.setProperty("timestamp", timestamp);
+
+        return ncommentEntity;
+
     }
 
    private String getParameter(HttpServletRequest request, String name, String defaultValue) {
