@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//These are for the Google charts :)
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(pieChart);
+
 /**
  * Adds a random greeting to the page.
  */
@@ -66,6 +70,45 @@ function convertObjects(comment){
     return node;
 }
 
+//Creating the pie charts
+function pieChart(){
+
+    //Chart code for incarcerated
+    var data = google.visualization.arrayToDataTable([
+          ['Race','Incarcerated'],
+          ['White', 796],
+          ['Hispanic', 1908],
+          ['Black', 4607]
+    ]);
+
+    var options = {
+
+          title: 'Men and women Incarcerated in the US',
+          is3D: true,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+    //---------------------------------------------------------------------------------//
+
+    //chart code for educated
+    var data2 = google.visualization.arrayToDataTable([
+        ['Race', 'Educated'],
+        ['White ', 34084],
+        ['Hispanic', 2652],
+        ['Black', 3259]
+    ]);
+
+    var options2 = {
+
+        title: 'College Graduates in the US',
+        is3D: true,
+    };
+    
+    var chart2 = new google.visualization.PieChart(document.getElementById('piechart_3d2'));
+    chart2.draw(data2, options2);
+    //------------------------------------------------------------------------------------//
+}
 
 
 /*function addNameToDom(name) {

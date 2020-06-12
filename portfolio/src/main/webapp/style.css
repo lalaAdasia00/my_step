@@ -281,6 +281,27 @@ textarea.contact-form-text {
     float: left;
 }
 
+#Title {
+    text-align: center;
+}
+
+#footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+}
+
+/*#piechart_3d2 {
+
+    float: left;
+    height: 100px;
+    margin: 10px;
+
+}*/
+
+
 
 /*#title {
   margin-right: 10px;

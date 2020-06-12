@@ -15,20 +15,23 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import com.google.gson.Gson;
+import java.util.List;
+import java.util.ArrayList;
 import com.google.sps.data.Comments;
+import javax.servlet.annotation.WebServlet;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
-import javax.servlet.annotation.WebServlet;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 import com.google.appengine.api.datastore.FetchOptions;
 
 
@@ -38,6 +41,15 @@ public class DataServlet extends HttpServlet {
 
     
   //private ArrayList<String>comments;
+
+  //Magic strings
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String phone;
+  public String message;
+  public long timestamp;
+
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException{
@@ -54,6 +66,25 @@ public class DataServlet extends HttpServlet {
           comments.add(comment);
 
         }
+
+        /*User Service
+      UserService userService = UserServiceFactory.getUserService();
+        if (userService.isUserLoggedIn()) {
+        String userEmail = userService.getCurrentUser().getEmail();
+        String urlToRedirectToAfterUserLogsOut = "/";
+        String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
+
+        response.getWriter().println("<p>Hello " + userEmail + "!</p>");
+        response.getWriter().println("<p>Logout <a href=\"" + logoutUrl + "\">here</a>.</p>");
+        } else {
+        String urlToRedirectToAfterUserLogsIn = "/";
+        String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+
+        response.getWriter().println("<p>Hello stranger.</p>");
+        response.getWriter().println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
+        }
+      //The end of User service code*/
+      
       
       //String json = convertToJsonUsingGson(comments);
       Gson gson = new Gson();
@@ -66,12 +97,12 @@ public class DataServlet extends HttpServlet {
     //create a helper function that converts an Entity object into a Comment object and call it within the for loop
     public Comments convertEntity(Entity entity){
 
-        String firstName = (String) entity.getProperty("firstName");
-        String lastName = (String) entity.getProperty("lastName");
-        String email = (String) entity.getProperty("email");
-        String phone = (String) entity.getProperty("phone");
-        String message = (String) entity.getProperty("message");
-        long timestamp = (long) entity.getProperty("timestamp");
+        firstName = (String) entity.getProperty("firstName");
+        lastName = (String) entity.getProperty("lastName");
+        email = (String) entity.getProperty("email");
+        phone = (String) entity.getProperty("phone");
+        message = (String) entity.getProperty("message");
+        timestamp = (long) entity.getProperty("timestamp");
 
         Comments nComments = new Comments(firstName, lastName, email, phone, message, timestamp);
 
@@ -95,12 +126,12 @@ public class DataServlet extends HttpServlet {
     public Entity convertComment(HttpServletRequest request){
 
         // Get the input from the form.
-        String firstName = getParameter(request, "firstName", "");
-        String lastName = getParameter(request, "lastName", "");
-        String email = getParameter(request, "email", "");
-        String phone = getParameter(request, "phone", "");
-        String message = getParameter(request, "message", "");
-        long timestamp = System.currentTimeMillis();
+        firstName = getParameter(request, "firstName", "");
+        lastName = getParameter(request, "lastName", "");
+        email = getParameter(request, "email", "");
+        phone = getParameter(request, "phone", "");
+        message = getParameter(request, "message", "");
+        timestamp = System.currentTimeMillis();
 
         Entity ncommentEntity = new Entity("Comments");
 
