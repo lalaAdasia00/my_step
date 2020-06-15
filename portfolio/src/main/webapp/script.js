@@ -125,6 +125,12 @@ function createMap() {
         title: 'Where I was born'
     });
 
+    //This is the text window for the Grand Rapids Marker
+    const grInfoWindow = new google.maps.InfoWindow({
+        content: 'I was born in Grand Rapids, Michigan. I lived here until I was 6 years old.'});
+        
+        grInfoWindow.open(map, grMarker);
+
     //This is the marker for where I was raised
     const htMarker = new google.maps.Marker({
         position: {lat: 29.749907, lng: -95.358421},
@@ -132,12 +138,26 @@ function createMap() {
         title: 'Where I was raised'
     });
 
+    //This is the text window for the Houston Marker
+    const htInfoWindow = new google.maps.InfoWindow({
+        content: 'I have lived here for about 14 years.'});
+        
+        htInfoWindow.open(map, htMarker);
+
     //This is the marker for where I go to college
     const hvMarker = new google.maps.Marker({
         position: {lat: 37.034946, lng: -76.360123},
         map: map,
         title: 'Where I attend college'
     });
+
+    //This is the text window for Hampton
+    const hvInfoWindow = new google.maps.InfoWindow({
+        content: 'This is where I attend the illustrious Hampton University.'});
+        
+        hvInfoWindow.open(map, hvMarker);
+
+
 }
 
 
