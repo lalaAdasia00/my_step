@@ -293,12 +293,20 @@ textarea.contact-form-text {
     height: 2.5rem;            /* Footer height */
 }
 
+.Map1 h1 {
+    text-align: center;
+    font-size: 50px;
+    margin: 100px 0 50px 0;
+}
 #map {
     /*height: 100%;*/
     
-    border: thin solid black;
+    border: thick solid #896124;
     height: 500px;
     width: 500px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px 100px;
 }
 
 /*#piechart_3d2 {

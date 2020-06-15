@@ -115,9 +115,29 @@ function createMap() {
   const map = new google.maps.Map(
       document.getElementById('map'), {
           center: {lat: 29.749907, lng: -95.358421},
-          zoom: 10
+          zoom: 4
         }
     );
+    //This is the marker for where I was born
+    const grMarker = new google.maps.Marker({
+        position: {lat: 42.963795, lng: -85.670006},
+        map: map,
+        title: 'Where I was born'
+    });
+
+    //This is the marker for where I was raised
+    const htMarker = new google.maps.Marker({
+        position: {lat: 29.749907, lng: -95.358421},
+        map: map,
+        title: 'Where I was raised'
+    });
+
+    //This is the marker for where I go to college
+    const hvMarker = new google.maps.Marker({
+        position: {lat: 37.034946, lng: -76.360123},
+        map: map,
+        title: 'Where I attend college'
+    });
 }
 
 
