@@ -110,6 +110,16 @@ function pieChart(){
     //------------------------------------------------------------------------------------//
 }
 
+//Function to creat a Map on the main portfolio page
+function createMap() {
+  const map = new google.maps.Map(
+      document.getElementById('map'), {
+          center: {lat: 29.749907, lng: -95.358421},
+          zoom: 10
+        }
+    );
+}
+
 
 /*function addNameToDom(name) {
   console.log('Adding quote to dom: ' + name);
