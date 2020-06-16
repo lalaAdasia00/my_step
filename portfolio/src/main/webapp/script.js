@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//These are for the Google charts :)
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(pieChart);
+
 /**
  * Adds a random greeting to the page.
  */
@@ -36,15 +40,125 @@ function addRandomGreeting() {
   document.getElementById('intro-container').innerText = intro;
 }
 */
-//This is the practice code for using JSON
+//using JSON
 
 function getComment(){
-    fetch('/comment').then(response => response.json()).then((comment) => {
-        document.getElementById('comment-container').innerHTML = comment;
+    
+    var value = document.getElementById("quantity").value;
+    fetch('/comment?num='+value).then(response => response.json()).then((comment) => {
+        
+        const node = document.getElementById('comment-container');
+        while(node.firstChild){
+            node.removeChild(node.firstChild);
+        }
+        document.getElementById('comment-container').appendChild(convertObjects(comment));
         console.log(comment);
     });
 }
 
+function convertObjects(comment){
+
+    const node = document.createElement("ul");
+
+    for(let i = 0; i < comment.length; i++){
+
+        const nextNode = document.createElement("li");
+        nextNode.innerText = comment[i].firstName + "," + comment[i].lastName + "," + comment[i].message;
+        node.appendChild(nextNode);
+
+    }
+    return node;
+}
+
+//Creating the pie charts
+function pieChart(){
+
+    //Chart code for incarcerated
+    var data = google.visualization.arrayToDataTable([
+          ['Race','Incarcerated'],
+          ['White', 796],
+          ['Hispanic', 1908],
+          ['Black', 4607]
+    ]);
+
+    var options = {
+
+          title: 'Men and women Incarcerated in the US',
+          is3D: true,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+    //---------------------------------------------------------------------------------//
+
+    //chart code for educated
+    var data2 = google.visualization.arrayToDataTable([
+        ['Race', 'Educated'],
+        ['White ', 34084],
+        ['Hispanic', 2652],
+        ['Black', 3259]
+    ]);
+
+    var options2 = {
+
+        title: 'College Graduates in the US',
+        is3D: true,
+    };
+    
+    var chart2 = new google.visualization.PieChart(document.getElementById('piechart_3d2'));
+    chart2.draw(data2, options2);
+    //------------------------------------------------------------------------------------//
+}
+
+//Function to creat a Map on the main portfolio page
+function createMap() {
+  const map = new google.maps.Map(
+      document.getElementById('map'), {
+          center: {lat: 29.749907, lng: -95.358421},
+          zoom: 4
+        }
+    );
+    //This is the marker for where I was born
+    const grMarker = new google.maps.Marker({
+        position: {lat: 42.963795, lng: -85.670006},
+        map: map,
+        title: 'Where I was born'
+    });
+
+    //This is the text window for the Grand Rapids Marker
+    const grInfoWindow = new google.maps.InfoWindow({
+        content: 'I was born in Grand Rapids, Michigan. I lived here until I was 6 years old.'});
+        
+        grInfoWindow.open(map, grMarker);
+
+    //This is the marker for where I was raised
+    const htMarker = new google.maps.Marker({
+        position: {lat: 29.749907, lng: -95.358421},
+        map: map,
+        title: 'Where I was raised'
+    });
+
+    //This is the text window for the Houston Marker
+    const htInfoWindow = new google.maps.InfoWindow({
+        content: 'I have lived here for about 14 years.'});
+        
+        htInfoWindow.open(map, htMarker);
+
+    //This is the marker for where I go to college
+    const hvMarker = new google.maps.Marker({
+        position: {lat: 37.034946, lng: -76.360123},
+        map: map,
+        title: 'Where I attend college'
+    });
+
+    //This is the text window for Hampton
+    const hvInfoWindow = new google.maps.InfoWindow({
+        content: 'This is where I attend the illustrious Hampton University.'});
+        
+        hvInfoWindow.open(map, hvMarker);
+
+
+}
 
 
 /*function addNameToDom(name) {

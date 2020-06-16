@@ -151,11 +151,14 @@ h1 {
 }
 
 .contact-form-text:focus {
-    box-shadow: 0 0 10px 4px #896124;
+    box-shadow: 0 0 10px 4px #ffffff;
+}
+input.contact-form-text:focus{
+    box shadow: 0 0 10px 4px #ffffff;
 }
 
 textarea.contact-form-text {
-    color: #896124;
+    color: #000000;
     resize: none;
     height: 120px;
 }
@@ -277,6 +280,43 @@ textarea.contact-form-text {
     font-size: 18px;
     float: left;
 }
+
+#Title {
+    text-align: center;
+}
+
+#footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+}
+
+.Map1 h1 {
+    text-align: center;
+    font-size: 50px;
+    margin: 100px 0 50px 0;
+}
+#map {
+    /*height: 100%;*/
+    
+    border: thick solid #896124;
+    height: 500px;
+    width: 500px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px 100px;
+}
+
+/*#piechart_3d2 {
+
+    float: left;
+    height: 100px;
+    margin: 10px;
+
+}*/
+
 
 
 /*#title {

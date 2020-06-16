@@ -15,73 +15,143 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import com.google.gson.Gson;
+import java.util.List;
+import java.util.ArrayList;
+import com.google.sps.data.Comments;
+import javax.servlet.annotation.WebServlet;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
-import javax.servlet.annotation.WebServlet;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.appengine.api.datastore.FetchOptions;
+
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/comment")
 public class DataServlet extends HttpServlet {
 
     
-  private ArrayList<String>comments;
+  //private ArrayList<String>comments;
+
+  //Magic strings
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String phone;
+  public String message;
+  public long timestamp;
+
   
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      comments = new ArrayList<>();
-      comments.add("Comment number 1 from server");
-      comments.add("Comment number 2 from server");
-      comments.add("Comment number 3 from server");
+  public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException{
+      int displayAmount = Integer.parseInt(request.getParameter("num"));      
+      Query query = new Query("Comments").addSort("timestamp", SortDirection.DESCENDING);
+
+      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      List<Entity> results = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(displayAmount));
+
+      List<Comments> comments = new ArrayList<>();
+      for (Entity entity : results) {
+
+          Comments comment = convertEntity(entity);//new Comments(firstName, lastName, email, phone, message);
+          comments.add(comment);
+
+        }
+
+        /*User Service
+      UserService userService = UserServiceFactory.getUserService();
+        if (userService.isUserLoggedIn()) {
+        String userEmail = userService.getCurrentUser().getEmail();
+        String urlToRedirectToAfterUserLogsOut = "/";
+        String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
+
+        response.getWriter().println("<p>Hello " + userEmail + "!</p>");
+        response.getWriter().println("<p>Logout <a href=\"" + logoutUrl + "\">here</a>.</p>");
+        } else {
+        String urlToRedirectToAfterUserLogsIn = "/";
+        String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+
+        response.getWriter().println("<p>Hello stranger.</p>");
+        response.getWriter().println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
+        }
+      //The end of User service code*/
       
-      String json = convertToJsonUsingGson(comments);
+      
+      //String json = convertToJsonUsingGson(comments);
+      Gson gson = new Gson();
       
 
       response.setContentType("application/json;");
-      response.getWriter().println(json);
+      response.getWriter().println(gson.toJson(comments));
     }
 
-    private String convertToJsonUsingGson(ArrayList comments){
-        Gson gson = new Gson();
-        String json = gson.toJson(comments);
-        return json;
+    //create a helper function that converts an Entity object into a Comment object and call it within the for loop
+    public Comments convertEntity(Entity entity){
+
+        firstName = (String) entity.getProperty("firstName");
+        lastName = (String) entity.getProperty("lastName");
+        email = (String) entity.getProperty("email");
+        phone = (String) entity.getProperty("phone");
+        message = (String) entity.getProperty("message");
+        timestamp = (long) entity.getProperty("timestamp");
+
+        Comments nComments = new Comments(firstName, lastName, email, phone, message, timestamp);
+
+        return nComments;
     }
 
-    
-    //The forms section
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Get the input from the form.
-    String text = getParameter(request, "first-name", "");
-    String text2 = getParameter(request, "last-name", "");
-    String email = getParameter(request, "email", "");
-    String phone = getParameter(request, "phone", "");
-    String message = getParameter(request, "message", "");
 
-    Entity taskEntity = new Entity("Task");
-    taskEntity.setProperty("first-name", text);
-    taskEntity.setProperty("last-name", text2);
-    taskEntity.setProperty("email", email);
-    taskEntity.setProperty("phone", phone);
-    taskEntity.setProperty("message", message);
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(taskEntity);
 
-    response.setContentType("text/html;");
-    response.getWriter().println(text);
-  }
+        Entity commentEntity = convertComment(request);
 
-  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        datastore.put(commentEntity);
+
+        response.sendRedirect("/contact.html");
+        
+    }
+    //so this function is converting request --> entity
+
+    public Entity convertComment(HttpServletRequest request){
+
+        // Get the input from the form.
+        firstName = getParameter(request, "firstName", "");
+        lastName = getParameter(request, "lastName", "");
+        email = getParameter(request, "email", "");
+        phone = getParameter(request, "phone", "");
+        message = getParameter(request, "message", "");
+        timestamp = System.currentTimeMillis();
+
+        Entity ncommentEntity = new Entity("Comments");
+
+        ncommentEntity.setProperty("firstName", firstName);
+        ncommentEntity.setProperty("lastName", lastName);
+        ncommentEntity.setProperty("email", email);
+        ncommentEntity.setProperty("phone", phone);
+        ncommentEntity.setProperty("message", message);
+        ncommentEntity.setProperty("timestamp", timestamp);
+
+        return ncommentEntity;
+
+    }
+
+   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
     if (value == null) {
       return defaultValue;
     }
     return value;
   }
-}
+
+}//This is the end of the class

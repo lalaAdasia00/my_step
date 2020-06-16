@@ -11,18 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale-1"> 
   </head>
 
-  <body>
+  <body onload="getComment()">
       <!--This is my navigation bar code-->
 
       <ul class="nav">
 
         <!--This is the title of my page-->
         <div class="logo">
-            <a href="#">La'Zshane's Portfolio</a>
+            <a href="main.html">La'Zshane's Portfolio</a>
         </div>
         <!--End of title code-->
 
         <li><a href="index.html">About Me</a></li>
+        <li><a href="BLM.html">BLM</a></li>
         <li><a href="skills.html">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="extra.html">Extracurriculars</a></li>
@@ -37,18 +38,29 @@
       
       <!--Contact Information Code-->
 
+
       <div class="contact-section">
           <h1>Contact</h1>
           <div class="border"></div>
           <form class="contact-form" action="/comment" method="POST">
-              <input type="text" class="contact-from-text" placeholder="First name" name="first-name">
-              <input type="text" class="contact-from-text" placeholder="Last name" name="last-name">
+              <input type="text" class="contact-from-text" placeholder="First name" name="firstName">
+              <input type="text" class="contact-from-text" placeholder="Last name" name="lastName">
               <input type="email" class="contact-from-text" placeholder="Your email" name="email">
               <input type="tel" class="contact-from-text" placeholder="Your phone" name="phone" pattern="^\d{3}-\d{3}-\d{4}$">
               <textarea class="contact-form-text" placeholder="Your message" name="message"></textarea>
               <input type="submit" class="contact-form-btn">
           </form>
       </div>
+      
+        <div id="comment-section">
+            <h2 id="comment-title">
+                <label for="quantity">Comment Amount:</label>
+                <input type="number" value="3" onchange="getComment()" id="quantity" name="quantity" min="1" max="50">
+            </h2>
+            <div class="scroll-box">
+                <div id="comment-container"></div>
+            </div>
+        </div>
 
       <!--<div id="comment">
             <p>Click here to see a comment:</p>
