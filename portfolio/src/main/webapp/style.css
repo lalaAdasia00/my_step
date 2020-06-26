@@ -4,6 +4,7 @@ body {
     font-family: cursive;
 }
 
+/* Index File code */
 .nav {
     background-color: #ffffff;
     color: #000000;
@@ -109,7 +110,9 @@ h1 {
     max-width: 200px;
     margin-top: 15px;
 } 
+/*End of the index code*/
 
+/*Contact page code*/
 .contact-section {
     background: url('https://media3.s-nbcnews.com/j/newscms/2019_52/3163571/191223-end-of-decade-black-lives-matter-main-kh_bc951e3d2b80d753a54363af8366d3c1.fit-760w.jpg') no-repeat;
     background-size: cover;
@@ -280,7 +283,9 @@ textarea.contact-form-text {
     font-size: 18px;
     float: left;
 }
+/*End of the contact page code*/
 
+/*BLM page code*/
 #Title {
     text-align: center;
 }
@@ -292,7 +297,9 @@ textarea.contact-form-text {
     width: 100%;
     height: 2.5rem;            /* Footer height */
 }
+/*End of BLM page code*/
 
+/*Main page code*/
 .Map1 h1 {
     text-align: center;
     font-size: 50px;
@@ -308,6 +315,122 @@ textarea.contact-form-text {
     text-align: center;
     margin: 10px 100px;
 }
+/*End of the main page code*/
+
+/*This is for the projects page*/
+.wrappers {
+    width: 90%;
+    margin: 0 auto;
+} 
+
+.header > h1 {
+    color: #fff;
+    font-size: 48px;
+    text-align: center;
+}
+
+.header > p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+
+}
+
+/*header*/
+
+.header {
+    margin: 100px 0 200px 120px;
+}
+
+.header > p {
+    width: 60%;
+    margin-top: 5px;
+}
+
+/*School*/
+.school {
+    text-align: center;
+    width: 100%;
+}
+
+.school > img {
+    margin: 1%;
+    width: 50%;
+
+}
+
+/*header2*/
+
+.header2 {
+    margin: 100px 0 200px 120px;
+}
+.header2 > p {
+    width: 60%;
+    margin-top: 5px;
+    padding: 20px 0 0 0;
+}
+
+.header2 > a > img {
+    border: 25px solid black;
+}
+
+.school2 {
+    width: 100%;
+    text-align: center;
+}
+
+.school2 > img {
+    margin: 1%;
+    width: 50%;
+}
+
+/*footer*/
+.wrappers > footer {
+    text-align: center;
+    color: grey;
+    margin: 60px auto;
+}
+
+@media only screen and (max-width: 991px) {
+    .header {
+        text-align: center;
+        margin: 100px 0 100px 30px;
+    }
+
+    .header > h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .header > p{
+        font-size: 12px;
+        width: 90%;
+    }
+
+    .school > img {
+        margin: 2%;
+        width: 90%;
+    }
+
+    .header2 {
+        margin: 130px 0 40px 12px;
+    }
+
+    .header2 > h1 {
+        font-size: 36px;
+    }
+
+    .header2 > p {
+        font-size: 12px;
+        width: 90%;
+    }
+
+    .school2 img {
+        margin: 2%;
+    }
+}
+
+
 
 /*#piechart_3d2 {
 

@@ -21,7 +21,7 @@ google.charts.setOnLoadCallback(pieChart);
  */
 function addRandomGreeting() {
   const greetings=
-      ['I make excellence the standard and not the goal!', 'My favorite color is PINK!', 'I love to play basketball', 'I am a musician'];
+      ['I make excellence the standard and not the goal!', 'My favorite color is PINK!', 'I love to play basketball', 'I am a musician', 'I am Ms. Marching Pirate'];
 
   // Pick a random fact.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -156,8 +156,6 @@ function createMap() {
         content: 'This is where I attend the illustrious Hampton University.'});
         
         hvInfoWindow.open(map, hvMarker);
-
-
 }
 
 
